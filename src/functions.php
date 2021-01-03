@@ -12,31 +12,22 @@ namespace FriendsOfHyperf\ClosureCommand;
 
 use Closure;
 
-class Console
-{
-    /**
-     * @var ClosureCommand[]
-     */
-    protected static $commands = [];
-
+if (! function_exists('FriendsOfHyperf\ClosureCommand\command')) {
     /**
      * @return ClosureCommand
      */
-    public static function command(string $signature, Closure $callback)
+    function command(string $signature, Closure $callback)
     {
-        $command = new ClosureCommand($signature, $callback);
-        $hash = spl_object_hash($command);
-
-        self::$commands[$hash] = $command;
-
-        return $command;
+        return Console::command($signature, $callback);
     }
+}
 
+if (! function_exists('FriendsOfHyperf\ClosureCommand\commands')) {
     /**
      * @return ClosureCommand[]
      */
-    public static function getCommands()
+    function commands()
     {
-        return self::$commands;
+        return Console::getCommands();
     }
 }
