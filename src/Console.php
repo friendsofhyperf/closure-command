@@ -14,7 +14,7 @@ use Closure;
 
 class Console
 {
-    protected $commands = [];
+    protected static $commands = [];
 
     public static function command(string $signature, Closure $callback)
     {

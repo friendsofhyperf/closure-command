@@ -12,7 +12,9 @@ namespace FriendsOfHyperf\ClosureCommand\Listener;
 
 use FriendsOfHyperf\ClosureCommand\Console;
 use Hyperf\Contract\ApplicationInterface;
+use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Event\Contract\ListenerInterface;
+use Hyperf\Framework\Event\BootApplication;
 use Hyperf\Utils\ApplicationContext;
 use Symfony\Component\Console\Application;
 
@@ -46,6 +48,8 @@ class RegisterCommandListener implements ListenerInterface
             $container = ApplicationContext::getContainer();
             /** @var Application $application */
             $application = $container->get(ApplicationInterface::class);
+            /** @var StdoutLoggerInterface */
+            $logger = $container->get(StdoutLoggerInterface::class);
             $commands = Console::all();
 
             foreach ($commands as $command) {
