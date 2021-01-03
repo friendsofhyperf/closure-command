@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @document https://github.com/friendsofhyperf/closure-command/blob/main/README.md
  * @contact  huangdijia@gmail.com
  */
-namespace FriendsOfHyperf;
+namespace FriendsOfHyperf\ClosureCommand;
 
 use Hyperf\Utils\Collection;
 
