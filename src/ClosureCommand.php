@@ -86,6 +86,7 @@ class ClosureCommand extends Command
         $callback = function () use ($input) {
             try {
                 $this->eventDispatcher && $this->eventDispatcher->dispatch(new BeforeHandle($this));
+
                 $inputs = array_merge($input->getArguments(), $input->getOptions());
                 $parameters = $this->parseClosureParameters($this->callback, $inputs);
 
@@ -100,6 +101,7 @@ class ClosureCommand extends Command
                 }
 
                 $this->eventDispatcher->dispatch(new FailToHandle($this, $exception));
+
                 return $exception->getCode();
             } finally {
                 $this->eventDispatcher && $this->eventDispatcher->dispatch(new AfterExecute($this));

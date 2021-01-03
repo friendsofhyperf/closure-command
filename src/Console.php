@@ -14,6 +14,9 @@ use Closure;
 
 class Console
 {
+    /**
+     * @var ClosureCommand[]
+     */
     protected static $commands = [];
 
     public static function command(string $signature, Closure $callback)
@@ -25,7 +28,10 @@ class Console
         return $command;
     }
 
-    public static function all()
+    /**
+     * @return ClosureCommand[]
+     */
+    public static function getCommands()
     {
         return self::$commands;
     }

@@ -34,7 +34,7 @@ class BootApplicationAspect extends AbstractAspect
                 require_once $route;
 
                 /** @var Application $application */
-                $commands = Console::all();
+                $commands = Console::getCommands();
 
                 foreach ($commands as $command) {
                     $application->add($command);
