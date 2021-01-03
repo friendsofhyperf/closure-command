@@ -19,6 +19,10 @@ php bin/hyperf.php vendor:publish friendsofhyperf/closure-command
 
 use FriendsOfHyperf/ClosureCommand/Console;
 
+Console::command('inspire', function () {
+    $this->comment(Inspiring::quote());
+})->describe('Display an inspiring quote');
+
 Console::command('foo:bar', function() {
     $this->info('Command foo:bar executed.');
 });
