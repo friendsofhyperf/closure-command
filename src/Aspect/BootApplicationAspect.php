@@ -14,6 +14,7 @@ use FriendsOfHyperf\ClosureCommand\Console;
 use Hyperf\Di\Annotation\Aspect;
 use Hyperf\Di\Aop\AbstractAspect;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
+use Hyperf\Di\Exception\Exception;
 use Symfony\Component\Console\Application;
 
 /**
@@ -25,6 +26,10 @@ class BootApplicationAspect extends AbstractAspect
         'Hyperf\Framework\ApplicationFactory::__invoke',
     ];
 
+    /**
+     * @throws Exception
+     * @return Application
+     */
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
         return tap($proceedingJoinPoint->process(), function ($application) {

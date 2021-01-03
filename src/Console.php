@@ -19,6 +19,9 @@ class Console
      */
     protected static $commands = [];
 
+    /**
+     * @return ClosureCommand
+     */
     public static function command(string $signature, Closure $callback)
     {
         $command = new ClosureCommand($signature, $callback);

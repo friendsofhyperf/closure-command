@@ -20,10 +20,15 @@ use Hyperf\Contract\NormalizerInterface;
 use Hyperf\Di\ClosureDefinitionCollectorInterface;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Utils\Coroutine;
+use InvalidArgumentException as GlobalInvalidArgumentException;
 use Psr\Container\ContainerInterface;
+use RuntimeException;
 use Swoole\ExitException;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
+use TypeError;
 
 class ClosureCommand extends Command
 {
@@ -62,6 +67,9 @@ class ClosureCommand extends Command
     {
     }
 
+    /**
+     * @return $this
+     */
     public function describe(string $description)
     {
         $this->setDescription($description);
@@ -79,6 +87,14 @@ class ClosureCommand extends Command
         return $this->normalizer;
     }
 
+    /**
+     * @throws InvalidArgumentException
+     * @throws TypeError
+     * @throws RuntimeException
+     * @throws Throwable
+     * @throws Throwable
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->enableDispatcher($input);
@@ -118,6 +134,9 @@ class ClosureCommand extends Command
         return $callback();
     }
 
+    /**
+     * @throws GlobalInvalidArgumentException
+     */
     protected function parseClosureParameters(Closure $closure, array $arguments): array
     {
         if (! $this->container->has(ClosureDefinitionCollectorInterface::class)) {
@@ -125,12 +144,17 @@ class ClosureCommand extends Command
         }
 
         $definitions = $this->getClosureDefinitionCollector()->getParameters($closure);
+
         return $this->getInjections($definitions, 'Closure', $arguments);
     }
 
+    /**
+     * @throws GlobalInvalidArgumentException
+     */
     private function getInjections(array $definitions, string $callableName, array $arguments): array
     {
         $injections = [];
+
         foreach ($definitions ?? [] as $pos => $definition) {
             $value = $arguments[$pos] ?? $arguments[$definition->getMeta('name')] ?? null;
             if ($value === null) {
@@ -148,6 +172,7 @@ class ClosureCommand extends Command
                 $injections[] = $this->getNormalizer()->denormalize($value, $definition->getName());
             }
         }
+
         return $injections;
     }
 }

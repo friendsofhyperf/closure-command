@@ -17,9 +17,7 @@ class ConfigProvider
         defined('BASE_PATH') or define('BASE_PATH', '');
 
         return [
-            'dependencies' => [
-                Console::class => Console::class,
-            ],
+            'dependencies' => [],
             'annotations' => [
                 'scan' => [
                     'paths' => [
