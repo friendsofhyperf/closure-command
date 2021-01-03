@@ -30,5 +30,5 @@ Console::command('inspire', function () {
 
 Console::command('foo:bar', function() {
     $this->info('Command foo:bar executed.');
-});
+})->describe('Description of command foo::bar');
 ```
