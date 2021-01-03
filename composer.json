@@ -1,5 +1,5 @@
 {
-    "name": "frendsofhyperf/closure-command",
+    "name": "friendsofhyperf/closure-command",
     "description": "Closure Command For Hyperf",
     "type": "library",
     "require": {
