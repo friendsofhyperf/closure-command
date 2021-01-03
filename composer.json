@@ -1,0 +1,35 @@
+{
+    "name": "frendsofhyperf/closure-command",
+    "description": "Closure Command For Hyperf",
+    "type": "library",
+    "require": {
+        "hyperf/command": "^2.0",
+        "hyperf/event": "^2.0",
+        "hyperf/di": "^2.0"
+    },
+    "require-dev": {
+        "hyperf/framework": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.04",
+        "swoole/ide-helper": "dev-master",
+        "phpstan/phpstan": "^0.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "FriendsOfHyperf\\ClosureCommand\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "huangdijia",
+        "email": "huangdijia@gmail.com"
+    }],
+    "extra": {
+        "hyperf": {
+            "config": "FriendsOfHyperf\\ClosureCommand\\ConfigProvider"
+        }
+    },
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix $1",
+        "analyse": "phpstan analyse --memory-limit 300M -l 0 -c phpstan.neon ./src"
+    }
+}
