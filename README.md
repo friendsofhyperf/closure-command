@@ -1,5 +1,10 @@
 # closure-command
 
+
+[![Latest Stable Version](https://poser.pugx.org/friendsofhyperf/closure-command/version.png)](https://packagist.org/packages/friendsofhyperf/closure-command)
+[![Total Downloads](https://poser.pugx.org/friendsofhyperf/closure-command/d/total.png)](https://packagist.org/packages/friendsofhyperf/closure-command)
+[![GitHub license](https://img.shields.io/github/license/friendsofhyperf/closure-command)](https://github.com/friendsofhyperf/closure-command)
+
 ## Installation
 
 ```bash
