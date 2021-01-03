@@ -10,8 +10,6 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\ClosureCommand;
 
-use FriendsOfHyperf\ClosureCommand\Listener\RegisterCommandListener;
-
 class ConfigProvider
 {
     public function __invoke(): array
@@ -31,7 +29,6 @@ class ConfigProvider
             ],
             'commands' => [],
             'listeners' => [
-                RegisterCommandListener::class,
             ],
             'publish' => [
                 [
