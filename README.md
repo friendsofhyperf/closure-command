@@ -17,7 +17,8 @@ php bin/hyperf.php vendor:publish friendsofhyperf/closure-command
 ```php
 // config/console.php
 
-use FriendsOfHyperf/ClosureCommand/Console;
+use FriendsOfHyperf\ClosureCommand\Console;
+use FriendsOfHyperf\ClosureCommand\Inspiring;
 
 Console::command('inspire', function () {
     $this->comment(Inspiring::quote());
