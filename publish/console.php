@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @contact  huangdijia@gmail.com
  */
 use FriendsOfHyperf\ClosureCommand\Console;
-use FriendsOfHyperf\Inspiring;
+use FriendsOfHyperf\ClosureCommand\Inspiring;
 
 Console::command('inspire', function () {
     $this->comment(Inspiring::quote());
