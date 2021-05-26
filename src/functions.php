@@ -31,3 +31,13 @@ if (! function_exists('FriendsOfHyperf\ClosureCommand\commands')) {
         return Console::getCommands();
     }
 }
+
+if (! function_exists('FriendsOfHyperf\ClosureCommand\call')) {
+    /**
+     * @return int
+     */
+    function call(string $command, array $arguments = [])
+    {
+        return Console::call($command, $arguments);
+    }
+}

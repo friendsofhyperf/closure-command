@@ -11,6 +11,12 @@ declare(strict_types=1);
 namespace FriendsOfHyperf\ClosureCommand;
 
 use Closure;
+use Hyperf\Contract\ApplicationInterface;
+use Hyperf\Utils\ApplicationContext;
+use Psr\Container\ContainerInterface;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
 
 class Console
 {
@@ -38,5 +44,25 @@ class Console
     public static function getCommands()
     {
         return self::$commands;
+    }
+
+    /**
+     * @return int
+     */
+    public static function call(string $command, array $arguments = [])
+    {
+        $arguments['command'] = $command;
+
+        $input = new ArrayInput($arguments);
+        $output = new NullOutput();
+
+        /** @var ContainerInterface $container */
+        $container = ApplicationContext::getContainer();
+
+        /** @var Application $application */
+        $application = $container->get(ApplicationInterface::class);
+        $application->setAutoExit(false);
+
+        return $application->run($input, $output);
     }
 }
