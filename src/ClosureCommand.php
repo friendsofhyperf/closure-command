@@ -106,7 +106,7 @@ class ClosureCommand extends Command
                 $inputs = array_merge($input->getArguments(), $input->getOptions());
                 $parameters = $this->parseClosureParameters($this->callback, $inputs);
 
-                call($this->callback->bindTo($this, $this), $parameters);
+                \call($this->callback->bindTo($this, $this), $parameters);
 
                 $this->eventDispatcher && $this->eventDispatcher->dispatch(new AfterHandle($this));
             } catch (ExitException $exception) {
